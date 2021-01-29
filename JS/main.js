@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					settings: {
 						slidesToShow:2,
 					}
-				}
+				},
 				{
 					breakpoint: 400,
 					settings: {
