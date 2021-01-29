@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
             breakpoint: 600,
             settings: {
               vertical: false,
-              slidesToShow: 6,
-              slidesToScroll: 6,
+              slidesToShow: 5,
+              slidesToScroll: 5,
               arrows: false
             }
           },
