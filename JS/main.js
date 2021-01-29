@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       $('.slider-nav .slider-nav__slide').on('click', function (event) {
         $('.slider-for').slick('slickGoTo', $(this).data('slickIndex'));
+	 });
+	 $('.slider-nav .slider-nav__slide').on('click', function (event) {
+        $('.slider-for').slick('slickGoTo', $(this).data('slickIndex'));
      });
      $('.slider-nav__slide').on("click", function() {
         $('.slider-nav__slide').removeClass("slider-nav__active");
@@ -67,26 +70,42 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
     
     const productMenuItem = document.querySelectorAll('.product-info-menu__item');
-    const productMenuArrow = document.querySelector('.product-info-menu__item-arrow');
+	const productMenuArrow = document.querySelector('.product-info-menu__item-arrow');
+	const hiddenBlock = document.querySelector('.hidden-block');
+	const hiddenBlockActivate = document.querySelector('.hidden-block-activate');
+	const hiddenBlockClose = document.querySelector('.hidden-block-close');
 
-    productMenuItem.forEach(element => {
-      element.addEventListener('click', ()=> {
-        productMenuItem.forEach(element => {
-          element.classList.remove('active');
-          if (element.classList.contains('show')) {
-            element.classList.toggle('show');
-          };
-        });
-        
-        element.classList.add('active');
-        
-      })
-    });
-    productMenuArrow.addEventListener('click', ()=> {
-      productMenuItem.forEach(element => {
-        element.classList.toggle('show');
-      });
-    })
+	hiddenBlockActivate.addEventListener('click', ()=> {
+		hiddenBlock.classList.add('active');
+		hiddenBlockClose.addEventListener('click', ()=> {
+			hiddenBlock.classList.remove('active');
+		});
+	});
+
+	const productInfoItem = document.querySelectorAll('.product-info-menu__item');
+	const productInfoSpoiler = document.querySelectorAll('.spoiler');
+	const productInfoSpoilerHidden = document.querySelectorAll('.spoiler-hidden');
+	for (let i = 0; i < productInfoItem.length; i++) {
+		productInfoItem[i].addEventListener('click', ()=> {
+			for (let a = 0; a < productInfoItem.length; a++) {
+				productInfoItem[a].classList.remove('active');
+				productInfoSpoilerHidden[a].classList.remove('active');
+			}
+			productInfoItem[i].classList.add('active');
+			productInfoSpoilerHidden[i].classList.add('active');
+		});
+	}
+
+	if (document.body.clientWidth < 660) {
+		
+		for (let i = 0; i < productInfoItem.length; i++) {
+			productInfoSpoiler[i].before(productInfoItem[i])
+			productInfoItem[i].addEventListener('click', ()=> {
+				productInfoItem[i].classList.toggle('active');
+				productInfoSpoilerHidden[i].classList.toggle('active');
+			});
+		}
+	}
    
                       
 
