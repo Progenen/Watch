@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         nextArrow: '<div class="slick-arrow-next"><img src="images/slider/arrow.png"></div>',
         responsive: [
           {
-            breakpoint: 600,
+            breakpoint: 768,
             settings: {
               vertical: false,
               slidesToShow: 5,
@@ -85,15 +85,18 @@ document.addEventListener('DOMContentLoaded', function() {
 	const productInfoItem = document.querySelectorAll('.product-info-menu__item');
 	const productInfoSpoiler = document.querySelectorAll('.spoiler');
 	const productInfoSpoilerHidden = document.querySelectorAll('.spoiler-hidden');
-	for (let i = 0; i < productInfoItem.length; i++) {
-		productInfoItem[i].addEventListener('click', ()=> {
-			for (let a = 0; a < productInfoItem.length; a++) {
-				productInfoItem[a].classList.remove('active');
-				productInfoSpoilerHidden[a].classList.remove('active');
-			}
-			productInfoItem[i].classList.add('active');
-			productInfoSpoilerHidden[i].classList.add('active');
-		});
+	
+	function ds() {
+		for (let i = 0; i < productInfoItem.length; i++) {
+			productInfoItem[i].addEventListener('click', ()=> {
+					for (let a = 0; a < productInfoItem.length; a++) {
+						productInfoItem[a].classList.remove('active');
+						productInfoSpoilerHidden[a].classList.remove('active');
+					}
+					productInfoItem[i].classList.add('active');
+					productInfoSpoilerHidden[i].classList.add('active');
+			});
+		}
 	}
 
 	if (document.body.clientWidth < 660) {
@@ -105,6 +108,8 @@ document.addEventListener('DOMContentLoaded', function() {
 				productInfoSpoilerHidden[i].classList.toggle('active');
 			});
 		}
+	} else {
+		ds();
 	}
    
                       
