@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         nextArrow: '<div class="slick-arrow-next"><img src="images/slider/arrow.png"></div>',
         responsive: [
           {
-            breakpoint: 770,
+            breakpoint: 768,
             settings: {
               vertical: false,
               slidesToShow: 5,
